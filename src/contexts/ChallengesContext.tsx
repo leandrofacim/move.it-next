@@ -1,10 +1,10 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import Cookie from "js-cookie";
-import challenges from "../../challenges.json";
-import { LevelUpModal } from "../components/LevelUpModal";
+import { createContext, ReactNode, useEffect, useState } from 'react';
+import Cookie from 'js-cookie';
+import challenges from '../../challenges.json';
+import { LevelUpModal } from '../components/LevelUpModal';
 
 interface Challenge {
-  type: "body" | "eye";
+  type: 'body' | 'eye';
   description: string;
   amount: number;
 }
@@ -35,10 +35,13 @@ export function ChallengesProvider({
   children,
   ...rest
 }: ChallengesProviderProps) {
-
   const [level, setLevel] = useState(rest.level ?? 1);
-  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
-  const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
+  const [currentExperience, setCurrentExperience] = useState(
+    rest.currentExperience ?? 0,
+  );
+  const [challengesCompleted, setChallengesCompleted] = useState(
+    rest.challengesCompleted ?? 0,
+  );
 
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModdalOpen, setIsLevelUpModalOpen] = useState(false);
@@ -64,10 +67,10 @@ export function ChallengesProvider({
 
     setActiveChallenge(chanllenge);
 
-    new Audio("/notification.mp3").play();
+    new Audio('/notification.mp3').play();
 
-    if (Notification.permission === "granted") {
-      new Notification("Novo desafio", {
+    if (Notification.permission === 'granted') {
+      new Notification('Novo desafio', {
         body: `Valendo ${chanllenge.amount}xp!`,
       });
     }
@@ -95,9 +98,9 @@ export function ChallengesProvider({
   }
 
   useEffect(() => {
-    Cookie.set("level", String(level));
-    Cookie.set("currentExperience", String(currentExperience));
-    Cookie.set("challengesCompleted", String(challengesCompleted));
+    Cookie.set('level', String(level));
+    Cookie.set('currentExperience', String(currentExperience));
+    Cookie.set('challengesCompleted', String(challengesCompleted));
   }, [level, currentExperience, challengesCompleted]);
 
   return (
@@ -116,7 +119,7 @@ export function ChallengesProvider({
       }}
     >
       {children}
-     { isLevelUpModdalOpen && <LevelUpModal /> } 
+      {isLevelUpModdalOpen && <LevelUpModal />}
     </ChallengesContext.Provider>
   );
 }

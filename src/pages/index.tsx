@@ -1,14 +1,14 @@
-import { CompletedChallenges } from "../components/CompletedChallenges";
-import { CountDown } from "../components/CountDown";
-import { ExperienceBar } from "../components/ExperienceBar";
-import { Profile } from "../components/Profile";
-import { ChallengeBox } from "../components/ChallengeBox";
-import { CountdownProvider } from "../contexts/CountdownContext";
-import { GetServerSideProps } from "next";
-import Head from "next/head";
+import { CompletedChallenges } from '../components/CompletedChallenges';
+import { CountDown } from '../components/CountDown';
+import { ExperienceBar } from '../components/ExperienceBar';
+import { Profile } from '../components/Profile';
+import { ChallengeBox } from '../components/ChallengeBox';
+import { CountdownProvider } from '../contexts/CountdownContext';
+import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
-import styles from "../styles/pages/Home.module.css";
-import { ChallengesProvider } from "../contexts/ChallengesContext";
+import styles from '../styles/pages/Home.module.css';
+import { ChallengesProvider } from '../contexts/ChallengesContext';
 interface HomeProps {
   level: number;
   currentExperience: number;
@@ -17,7 +17,7 @@ interface HomeProps {
 
 export default function Home(props: HomeProps) {
   return (
-    <ChallengesProvider 
+    <ChallengesProvider
       level={props.level}
       currentExperience={props.currentExperience}
       challengesCompleted={props.challengesCompleted}
